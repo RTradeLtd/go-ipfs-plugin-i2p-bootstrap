@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  digest = "1:bdbe9a8147dd7748e3a29de91457ad0082273b48e29aa727f281f5f2a745e616"
+  name = "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway"
+  packages = ["config"]
+  pruneopts = "UT"
+  revision = "f8e40a1c034fb8bdaf0c4af6a395a787bade270b"
+  version = "v0.0.1"
+
+[[projects]]
+  branch = "master"
+  digest = "1:e3ddd1f59d3c84917c99ecb1c3420aa6899f6df7495ba9414c13732b2e9568dd"
+  name = "github.com/gxed/hashland"
+  packages = ["keccakpg"]
+  pruneopts = "UT"
+  revision = "d9f6b97f8db22dd1e090fd0bbbe98f09cc7dd0a8"
+
+[[projects]]
   digest = "1:90a7bb06526a20ca80e130fe39e95d221680aaf7a4ef259d37fa086c2e7528c4"
   name = "github.com/ipfs/go-ipfs"
   packages = [
@@ -23,10 +39,94 @@
   revision = "aefc746f34e5ffdee5fba1915c6603b65a0ebf81"
   version = "v0.4.18"
 
+[[projects]]
+  digest = "1:aae82c244bd91107575a0244a29e82e34ba23e06b6892557e33728de48deba96"
+  name = "github.com/ipfs/go-ipfs-util"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "10d786c5ed859afd22223df76a89bf57b24b2ee1"
+  version = "v1.2.8"
+
+[[projects]]
+  branch = "master"
+  digest = "1:130cefe87d7eeefc824978dcb78e35672d4c49a11f25c153fbf0cfd952756fa3"
+  name = "github.com/minio/blake2b-simd"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3f5f724cb5b182a5c278d6d3d55b40e7f8c2efb4"
+
+[[projects]]
+  branch = "master"
+  digest = "1:eea9588ebf4cf89c7da8360e8d19627b74b78eec74df6df9e0c5defcee4f3617"
+  name = "github.com/minio/sha256-simd"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2d45a736cd16732fe6a57563cc20d8b035193e58"
+
+[[projects]]
+  digest = "1:5d231480e1c64a726869bc4142d270184c419749d34f167646baa21008eb0a79"
+  name = "github.com/mitchellh/go-homedir"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "af06845cf3004701891bf4fdb884bfe4920b3727"
+  version = "v1.1.0"
+
+[[projects]]
+  digest = "1:cf5b7fbff2c87cff6c0e11f87b30edc21abc6592e6a76f41003ca6d5a712cf48"
+  name = "github.com/mr-tron/base58"
+  packages = ["base58"]
+  pruneopts = "UT"
+  revision = "89529c6904fcd077434931b4eac8b4b2f0991baf"
+  version = "v1.1.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:b2e02cbee843d6aa42a31f1ce7650ca143fb8ba639e759262dea65f456d0c1b6"
+  name = "github.com/multiformats/go-multiaddr"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "152990b98bf9dce961ca2aefb1002cd96cfff6cb"
+
+[[projects]]
+  digest = "1:c0ea71365e7d0e63a2e8f48e6fc2ba92f2f2b739bbeb3cdabdcd719037e175c2"
+  name = "github.com/multiformats/go-multihash"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8be2a682ab9f254311de1375145a2f78a809b07d"
+  version = "v1.0.8"
+
+[[projects]]
+  digest = "1:919bb3aa6d9d0b67648c219fa4925312bc3c2872da19e818fa769e9c97a2b643"
+  name = "github.com/spaolacci/murmur3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "9f5d223c60793748f04a9d5b4b4eacddfc1f755d"
+  version = "v1.1"
+
+[[projects]]
+  branch = "master"
+  digest = "1:de26ed971d50507aec10dd4568a6f204bf5f2998c8ac387b4d1c2850cbf8144f"
+  name = "golang.org/x/crypto"
+  packages = [
+    "blake2s",
+    "sha3",
+  ]
+  pruneopts = "UT"
+  revision = "74369b46fc6756741c016591724fd1cb8e26845f"
+
+[[projects]]
+  branch = "master"
+  digest = "1:ec6f59e1bf9320ddb148dab9e01c8f3448d0fa8f454b235a1972016d3d59d3bd"
+  name = "golang.org/x/sys"
+  packages = ["cpu"]
+  pruneopts = "UT"
+  revision = "e77772198cdc3dbfcf7f2de96630204df9fd3a0b"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway/config",
     "github.com/ipfs/go-ipfs/core/coreapi/interface",
     "github.com/ipfs/go-ipfs/plugin",
     "github.com/ipfs/go-ipfs/repo/fsrepo",

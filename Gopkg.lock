@@ -18,16 +18,13 @@
   revision = "d9f6b97f8db22dd1e090fd0bbbe98f09cc7dd0a8"
 
 [[projects]]
-  digest = "1:90a7bb06526a20ca80e130fe39e95d221680aaf7a4ef259d37fa086c2e7528c4"
+  digest = "1:75ea7415736432ce95ed66318b10661985dcbdd22112f488ba852afd74238aca"
   name = "github.com/ipfs/go-ipfs"
   packages = [
-    "core/coreapi/interface",
-    "core/coreapi/interface/options",
     "core/coredag",
     "filestore",
     "filestore/pb",
     "keystore",
-    "namesys/opts",
     "plugin",
     "repo",
     "repo/common",
@@ -127,9 +124,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway/config",
-    "github.com/ipfs/go-ipfs/core/coreapi/interface",
     "github.com/ipfs/go-ipfs/plugin",
-    "github.com/ipfs/go-ipfs/repo/fsrepo",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

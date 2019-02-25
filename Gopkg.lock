@@ -2,12 +2,40 @@
 
 
 [[projects]]
-  digest = "1:bdbe9a8147dd7748e3a29de91457ad0082273b48e29aa727f281f5f2a745e616"
+  branch = "swarm"
+  digest = "1:05f8ed680734327c641f79002e03e6bf1fd94777bf98a877b973c6e14c323c19"
   name = "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway"
   packages = ["config"]
   pruneopts = "UT"
-  revision = "f8e40a1c034fb8bdaf0c4af6a395a787bade270b"
-  version = "v0.0.1"
+  revision = "8eac41b715928dd8580de1b8cfffe0127fac890d"
+
+[[projects]]
+  branch = "master"
+  digest = "1:3eef75512db1fa9d1fb4e20cf57122e2dcc960e33906d188e9fc3c8ac52c3612"
+  name = "github.com/eyedeekay/sam-forwarder"
+  packages = [
+    ".",
+    "i2pkeys",
+    "i2pkeys/keys",
+  ]
+  pruneopts = "UT"
+  revision = "8b4b86b3ee5a6adb3b051d3624cb53e1ee5d327d"
+
+[[projects]]
+  branch = "master"
+  digest = "1:2961f13e96f9b3254d357fee455c1553ed40f9b2157a6621a48808f35752abb9"
+  name = "github.com/eyedeekay/sam3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3ae32811684fe94ebef4251249efb46919b0111c"
+
+[[projects]]
+  branch = "master"
+  digest = "1:aed2e9b126305bbbe630edd83e25d8c49a19bf5663ec412d7bf54a5e262e5814"
+  name = "github.com/gtank/cryptopasta"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "1f550f6f2f69009f6ae57347c188e0a67cd4e500"
 
 [[projects]]
   branch = "master"
@@ -102,10 +130,12 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:de26ed971d50507aec10dd4568a6f204bf5f2998c8ac387b4d1c2850cbf8144f"
+  digest = "1:1ae800d163e65ab7a5880008de5828ab4c1d6fc6c509ba745e0a6f23312b8259"
   name = "golang.org/x/crypto"
   packages = [
+    "bcrypt",
     "blake2s",
+    "blowfish",
     "sha3",
   ]
   pruneopts = "UT"
@@ -124,7 +154,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway/config",
+    "github.com/eyedeekay/sam-forwarder",
     "github.com/ipfs/go-ipfs/plugin",
+    "github.com/ipfs/go-ipfs/repo/fsrepo",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

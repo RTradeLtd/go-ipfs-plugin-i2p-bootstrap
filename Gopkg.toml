@@ -24,6 +24,9 @@
 #   go-tests = true
 #   unused-packages = true
 
+[[constraint]]
+  branch = "swarm"
+  name = "github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway"
 
 [prune]
   go-tests = true

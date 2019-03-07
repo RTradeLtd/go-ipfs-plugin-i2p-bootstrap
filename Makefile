@@ -7,7 +7,6 @@ GOCC ?= go
 build:
 	mkdir -p build
 	@$(MAKE) -f $(THIS_FILE) plugin-ipfs
-	@$(MAKE) -f $(THIS_FILE) ipfs
 
 # build the actual plugin
 .PHONY: plugin-ipfs

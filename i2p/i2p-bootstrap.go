@@ -3,8 +3,6 @@
 package i2pbootstrap
 
 import (
-	"log"
-
 	"github.com/RTradeLtd/go-ipfs-plugin-i2p-gateway/config"
 	"github.com/eyedeekay/sam-forwarder"
 )
@@ -20,16 +18,16 @@ func (i *I2PBootstrapPlugin) ConnectBootstraps() error {
 }
 
 func (i *I2PBootstrapPlugin) ConnectBootstrap(address string) error {
-	log.Println("Creating an i2p destination for the Swarm Bootstrap Client")
+	i.Log("Creating an i2p destination for the Swarm Bootstrap Client")
 	host := address
-	log.Println("Swarm Bootstrap host", host)
+	i.Log("Swarm Bootstrap host", host)
 	port := "4001"
-	log.Println("Swarm Bootstrap port", port)
+	i.Log("Swarm Bootstrap port", port)
 	pathRoot, err := i2pgateconfig.PathRoot()
 	if err != nil {
 		return err
 	}
-	log.Println("Keys Path", pathRoot+"ipfs-gateway-swarm.i2pkeys")
+	i.Log("Keys Path", pathRoot+"ipfs-bootstrap.i2pkeys")
 	GarlicForwarder, err := samforwarder.NewSAMClientForwarderFromOptions(
 		//samforwarder.SetClientType("client"),
 		samforwarder.SetClientSaveFile(true),
@@ -65,14 +63,14 @@ func (i *I2PBootstrapPlugin) ConnectBootstrap(address string) error {
 		return err
 
 	}
-	log.Println("SAM Generated Garlic Forwarder")
+	i.Log("SAM Generated Garlic Forwarder")
 	go GarlicForwarder.Serve()
 	for {
 		if len(GarlicForwarder.Base32()) > 51 {
-			log.Println("i2p base32: ", GarlicForwarder.Base32())
+			i.Log("i2p base32(swarm): ", GarlicForwarder.Base32())
 			break
 		} else {
-			log.Println("waiting for address")
+			i.Log("waiting for address")
 		}
 	}
 	err = i2pgateconfig.ListenerBase32(GarlicForwarder.Base32(), i.i2pconfig)

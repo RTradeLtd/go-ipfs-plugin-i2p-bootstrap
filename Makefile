@@ -2,6 +2,7 @@ THIS_FILE := $(lastword $(MAKEFILE_LIST))
 UNSAFE=no
 GOCC ?= go
 IPFS_VERSION=v0.4.19
+IPFS_PATH="$(HOME)/Workspace/ipfs"
 
 # build plugin and ipfs daemon
 .PHONY: build
@@ -55,11 +56,11 @@ build-i2p:
 .PHONY: fmt
 fmt:
 	find ./i2p -name '*.go' -exec gofmt -w {} \;
+	gofmt -w *.go
 
 # run tests
 .PHONY: test
 test:
-	go test ./config -v
 	go test ./i2p -v
 
 # vet go code

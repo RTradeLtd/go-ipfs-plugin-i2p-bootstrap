@@ -41,6 +41,11 @@ func (*I2PBootstrapPlugin) Version() string {
 	return "0.0.0"
 }
 
+// Log wraps around log.Println and adds information about the plugin
+func (i *I2PBootstrapPlugin) Log(in ...interface{}) {
+	log.Println(i.Name(), i.Version(), in)
+}
+
 // Init initializes plugin, satisfying the plugin.Plugin interface. Put any
 // initialization logic here.
 func (i *I2PBootstrapPlugin) Init() error {
@@ -54,6 +59,7 @@ func (i *I2PBootstrapPlugin) Init() error {
 // Setup creates an I2PBootstrapPlugin and config file, but it doesn't start
 // any tunnels.
 func Setup() (*I2PBootstrapPlugin, error) {
+	log.Println("fwd-i2pbootstrap", "plugin preparing to start")
 	var err error
 	var i I2PBootstrapPlugin
 	i.configPath, err = fsrepo.BestKnownPath()
@@ -69,7 +75,7 @@ func Setup() (*I2PBootstrapPlugin, error) {
 		return nil, err
 	}
 	i.connectBootstraps = i.bootstrapStrings()
-	log.Println("Prepared to connect:", i.connectBootstraps)
+	i.Log("Prepared to connect:", i.connectBootstraps)
 	i.i2pconfig, err = i2pgateconfig.ConfigAt(i.configPath)
 	if err != nil {
 		return nil, err
@@ -83,6 +89,7 @@ func Setup() (*I2PBootstrapPlugin, error) {
 	if err != nil {
 		return nil, err
 	}
+	i.Log("started")
 	return &i, nil
 }
 

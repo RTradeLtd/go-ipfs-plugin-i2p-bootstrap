@@ -1,6 +1,7 @@
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 UNSAFE=no
 GOCC ?= go
+IPFS_VERSION=v0.4.19
 
 # build plugin and ipfs daemon
 .PHONY: build
@@ -17,7 +18,8 @@ plugin-ipfs:
 # build ipfs daemon
 .PHONY: ipfs
 ipfs:
-	( cd $(GOPATH)/src/github.com/ipfs/go-ipfs/; make install )
+	( cd vendor/github.com/ipfs/go-ipfs/cmd/ipfs; go build -o ../../../../../../build/ipfs )
+	install -m755 build/ipfs $(GOPATH)/bin
 
 # clean up files
 .PHONY: clean
@@ -88,7 +90,7 @@ vendor-dep:
 vendor-ipfs:
 	# Generate IPFS dependencies
 	rm -rf vendor/github.com/ipfs/go-ipfs
-	git clone https://github.com/ipfs/go-ipfs.git vendor/github.com/ipfs/go-ipfs --branch v0.4.19
+	git clone https://github.com/ipfs/go-ipfs.git vendor/github.com/ipfs/go-ipfs --branch $(IPFS_VERSION)
 	( cd vendor/github.com/ipfs/go-ipfs ; gx install --local --nofancy )
 
 	rsync -ravhp vendor/github.com/ipfs/go-ipfs/vendor/* vendor/

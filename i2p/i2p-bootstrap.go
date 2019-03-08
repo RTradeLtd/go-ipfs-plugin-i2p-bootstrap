@@ -10,13 +10,13 @@ import (
 )
 
 func (i *I2PBootstrapPlugin) ConnectBootstraps() error {
-    for _, address := range i.connectBootstraps {
-        err := i.ConnectBootstrap(address)
-        if err != nil {
-            return err
-        }
-    }
-    return nil
+	for _, address := range i.connectBootstraps {
+		err := i.ConnectBootstrap(address)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (i *I2PBootstrapPlugin) ConnectBootstrap(address string) error {

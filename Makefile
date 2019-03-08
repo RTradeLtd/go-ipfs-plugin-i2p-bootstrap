@@ -54,7 +54,7 @@ build-i2p:
 # format i2p and config golang files
 .PHONY: fmt
 fmt:
-	find ./i2p ./config -name '*.go' -exec gofmt -w {} \;
+	find ./i2p -name '*.go' -exec gofmt -w {} \;
 
 # run tests
 .PHONY: test

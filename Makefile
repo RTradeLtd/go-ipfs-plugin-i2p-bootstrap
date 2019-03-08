@@ -17,7 +17,7 @@ plugin-ipfs:
 # build ipfs daemon
 .PHONY: ipfs
 ipfs:
-	( cd vendor/github.com/ipfs/go-ipfs/cmd/ipfs ; go build -o ../../../../../../build/ipfs ; cp ../../../../../../build/ipfs $(GOPATH)/bin)
+	( cd $(GOPATH)/src/github.com/ipfs/go-ipfs/; make install )
 
 # clean up files
 .PHONY: clean
@@ -73,18 +73,26 @@ import:
 
 # completely rebuild vendor
 .PHONY: vendor
-vendor:
+vendor: vendor-dep vendor-ipfs
+
+.PHONY: vendor-dep
+vendor-dep:
 	# Nuke vendor directory
 	rm -rf vendor
 
 	# Update standard dependencies
 	#dep ensure -v -update
 	dep ensure -v
+
+.PHONY: vendor-ipfs
+vendor-ipfs:
 	# Generate IPFS dependencies
 	rm -rf vendor/github.com/ipfs/go-ipfs
-	git clone https://github.com/ipfs/go-ipfs.git vendor/github.com/ipfs/go-ipfs
+	git clone https://github.com/ipfs/go-ipfs.git vendor/github.com/ipfs/go-ipfs --branch v0.4.19
 	( cd vendor/github.com/ipfs/go-ipfs ; gx install --local --nofancy )
-	mv vendor/github.com/ipfs/go-ipfs/vendor/* vendor
+
+	rsync -ravhp vendor/github.com/ipfs/go-ipfs/vendor/* vendor/
+	rm -rf vendor/github.com/ipfs/go-ipfs/vendor/
 
 	# Remove problematic dependencies
 	find . -name test-vectors -type d -exec rm -r {} +

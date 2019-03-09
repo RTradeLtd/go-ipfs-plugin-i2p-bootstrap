@@ -49,17 +49,18 @@ func (i *I2PBootstrapPlugin) Log(in ...interface{}) {
 // Init initializes plugin, satisfying the plugin.Plugin interface. Put any
 // initialization logic here.
 func (i *I2PBootstrapPlugin) Init() error {
-	/*i := Setup()
-	    if err != nil {
-			return nil, err
-		}*/
+	var err error
+    i.Log("Initializing the IPFS plugin configuration")
+    if i, err = Setup(); err != nil {
+        return err
+    }
 	return nil
 }
 
 // Setup creates an I2PBootstrapPlugin and config file, but it doesn't start
 // any tunnels.
 func Setup() (*I2PBootstrapPlugin, error) {
-	log.Println("fwd-i2pbootstrap", "plugin preparing to start")
+	log.Println("Setting up plugin configuration", "fwd-i2pbootstrap")
 	var err error
 	var i I2PBootstrapPlugin
 	i.configPath, err = fsrepo.BestKnownPath()
